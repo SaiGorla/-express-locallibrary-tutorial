@@ -1,13 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
 
-var app = express();
+let app = express();
+
+//Set up mongoose connection
+let mongoose = require('mongoose');
+const mongoDB = 'mongodb+srv://Sai:<Sai>@cluster0-gdkck.mongodb.net/Sai?retryWrites=true&w=majority';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
