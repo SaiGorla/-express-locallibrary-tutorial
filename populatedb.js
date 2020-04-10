@@ -55,7 +55,7 @@ function genreCreate(name, cb) {
       cb(err, null);
       return;
     }
-    console.log('New Genre: ' + genre);
+    console.log('New Genre:' + genre);
     genres.push(genre)
     cb(null, genre);
   }   );
@@ -76,7 +76,7 @@ function bookCreate(title, summary, isbn, author, genre, cb) {
       cb(err, null)
       return
     }
-    console.log('New Book: ' + book);
+    console.log('New Book:' + book);
     books.push(book)
     cb(null, book)
   }  );
