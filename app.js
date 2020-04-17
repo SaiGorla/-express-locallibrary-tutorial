@@ -1,4 +1,5 @@
 let createError = require('http-errors');
+const dotenv = require('dotenv')
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
@@ -12,11 +13,13 @@ let app = express();
 //Set up mongoose connection
 let mongoose = require('mongoose');
 const mongoDB = 'mongodb+srv://Sai:<Sai>@cluster0-gdkck.mongodb.net/Sai?retryWrites=true&w=majority';
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, { useNewUrlParser: true,useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+dotenv.config({ path: '.env' })
 // view engine setup
+dev_db_url = process.env.ATLAS_URI
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
